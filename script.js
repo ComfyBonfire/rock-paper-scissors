@@ -21,6 +21,7 @@ function singleRound() {
         lossCounter = lossCounter + 1;
         console.log(`${randomChoice} beats ${user}! You Loss!`)
     }
+    console.log(`The result is User: ${wonCounter}, Computer: ${lossCounter}!`);
 };
 
 let wonCounter = 0
