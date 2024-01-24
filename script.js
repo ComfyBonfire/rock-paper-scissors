@@ -1,33 +1,46 @@
+function random(){
+    let arr = ['rock', 'paper', 'scissors']
+    let randomIndex = Math.floor(Math.random() * arr.length)
+    return arr[randomIndex]
+}
+function singleRound() {
+    let user = prompt("Choose between: rock, paper and scissors!").toLowerCase()
+    let randomChoice = random()
+    if (randomChoice === 'rock' && user === 'paper') {
+        wonCounter = wonCounter + 1;
+        console.log(`${user} beats ${randomChoice}! You Won!`)
+    } else if (randomChoice === 'paper' && user === 'scissors') {
+        wonCounter = wonCounter + 1;
+        console.log(`${user} beats ${randomChoice}! You Won!`)
+    } else if (randomChoice === 'scissors' && user === 'rock') {
+        wonCounter = wonCounter + 1;
+        console.log(`${user} beats ${randomChoice}! You Won!`)
+    } else if (randomChoice === user) {
+        console.log("It\'s a tie!")
+    } else {
+        lossCounter = lossCounter + 1;
+        console.log(`${randomChoice} beats ${user}! You Loss!`)
+    }
+};
 
-let computerChoice = Math.floor(Math.random() * 3) + 1;
+let wonCounter = 0
+let lossCounter = 0
 
-if (computerChoice == 1) {
-    computerChoice = ("rock");
-} else if (computerChoice == 2) {
-    computerChoice = ("paper");
-} else {
-    computerChoice = ("scissors");
+function endGame() {
+    if (wonCounter > lossCounter) {
+        console.log("Game Over! You Win! :)");
+    } else if (lossCounter > wonCounter) {
+        console.log("Game Over! You Lost! :(");
+    }
 }
 
-let userChoice = prompt('Pick a choice between rock, paper and scissors!');
-userChoice = userChoice.toLowerCase();
-
-if (userChoice == "rock" && computerChoice == "scissors") {
-    console.log("You Won!");
-} else if (userChoice == "rock" && computerChoice == "paper") {
-    console.log("Too bad, You Lost!");
-} else if (userChoice == "paper" && computerChoice == "rock") {
-    console.log("You Won!");
-} else if (userChoice == "paper" && computerChoice == "scissors") {
-    console.log("Too bad, You Lost!");
-} else if (userChoice == "scissors" && computerChoice == "rock") {
-    console.log("Too bad, You Lost!");
-} else if (userChoice == "scissors" && computerChoice == "paper") {
-    console.log("You Won!");
-} else {
-    console.log("It\'s a Tie!");
+function game() {
+    singleRound();
+    if(wonCounter < 5 && lossCounter < 5){
+        game();
+    } else {
+        endGame();
+    }
 }
 
-console.log(`Your choice was ${userChoice}!`);
-
-console.log(`Computer\'s choice was ${computerChoice}!`);
+game();
