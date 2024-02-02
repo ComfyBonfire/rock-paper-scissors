@@ -1,0 +1,25 @@
+
+button {
+    width: 200px;
+    height: 50px;
+    background-color: aqua;
+}
+
+
+#start {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+#start {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+}
